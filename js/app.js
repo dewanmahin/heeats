@@ -9,8 +9,17 @@ const loadTemperature = async city => {
 }
 
 const displayTemperature = data => {
+    console.log(data);
     const temperature = document.getElementById('temperature');
     temperature.innerText = data.main.temp;
+    document.getElementById('city').innerText = data.name;
+    document.getElementById('weatherCondition').innerText = data.weather[0].main;
 }
 
-loadTemperature('new york')
+document.getElementById('searchBtn').addEventListener('click', function(){
+    const searchField = document.getElementById('searchField');
+    const city = searchField.value;
+    loadTemperature(city);
+})
+
+loadTemperature('sylhet')
